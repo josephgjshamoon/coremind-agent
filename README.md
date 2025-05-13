@@ -87,5 +87,10 @@ Do **not** upload your `.env` file or real API key to GitLab.
 
 ---
 
-### 📄 License
-MIT
+
+### 🧠 New Features (May 2025 Update)
+
+- ✅ Added **conversation memory** using LangChain’s `ConversationBufferMemory`
+- ✅ Agent now supports **multi-turn conversations**, enabling context-aware responses
+- ✅ Wrapped in a **chat loop**, allowing continuous dialogue without restarting the script
+- ✅ Output is now **structured and readable**, parsed cleanly using JSON
