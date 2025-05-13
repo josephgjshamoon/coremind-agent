@@ -5,7 +5,10 @@ from langchain_anthropic import ChatAnthropic
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import PydanticOutputParser
 from langchain.agents import create_tool_calling_agent, AgentExecutor
+from langchain.memory import ConversationBufferMemory
 from tools import search_tool, wiki_tool, save_tool
+
+import json
 
 
 load_dotenv()
@@ -44,7 +47,15 @@ agent = create_tool_calling_agent(
     tools=tools
 )
 
-agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
-query = input("What can I help you search?")
-raw_response = agent_executor.invoke({"query": query})
-print=(raw_response)
+memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
+agent_executor = AgentExecutor(agent=agent, tools=tools, memory=memory, verbose=True)
+while True:
+    query = input("\nYou: ")
+    if query.lower() in ["exit", "quit"]:
+        break
+    raw_response = agent_executor.invoke({"query": query})
+    parsed = json.loads(raw_response["output"])
+    print("\n🧠 Topic:", parsed["topic"])
+    print("📝 Summary:", parsed["summary"])
+    print("🔗 Sources:", ", ".join(parsed["sources"]))
+    print("🛠 Tools Used:", ", ".join(parsed["tools_used"]))
