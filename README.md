@@ -1,96 +1,109 @@
-# AI Research Agent 🤖📚
+# 🧠 CoreMind
 
-An AI-powered research assistant that uses GPT-4o (via LangChain) to answer questions with concise summaries, verified sources, and optional saving to a local text file.
-
----
-
-### 🔍 What it does
-- Uses DuckDuckGo and Wikipedia to gather data  
-- Automatically selects tools using LangChain Agents  
-- Parses structured output using Pydantic  
-- Saves results to `research_output.txt` if needed  
+CoreMind is an autonomous, truth-seeking AI assistant powered by the open-source Mistral language model and live web search via SerpAPI. It’s designed to provide unbiased, human-like summaries of real-time information — free from political filters, commercial agendas, or institutional control.
 
 ---
 
-### 🚀 How to Use
+## 🌐 What It Does
 
-1. **Clone the repo**
+- ✅ Pulls live information using [SerpAPI](https://serpapi.com) (Google-powered search)
+- ✅ Feeds results into [Mistral](https://mistral.ai)’s LLM (via Ollama) for reasoning
+- ✅ Responds conversationally with logic, transparency, and clarity
+- ✅ Acknowledges uncertainty and conflicting viewpoints
+- ✅ Saves output to local files when needed
 
-```bash
-git clone https://gitlab.com/YOUR_USERNAME/ai-research-agent.git
-cd ai-research-agent
-```
+---
 
-2. **Create a `.env` file**
+## ⚙️ Tech Stack
 
-```env
-OPENAI_API_KEY="your-openai-key-here"
-```
+- **Python 3.11**
+- [LangChain](https://python.langchain.com/)
+- [Mistral LLM](https://ollama.com/library/mistral) (via [Ollama](https://ollama.com))
+- [SerpAPI](https://serpapi.com) (search results)
+- Pydantic + dotenv
 
-3. **Install dependencies**
+---
+
+## 📦 Setup Instructions
+
+1. **Install dependencies:**
 
 ```bash
 pip install -r requirements.txt
+````
+
+2. **Add your SerpAPI key to `.env`:**
+
+```env
+SERPAPI_API_KEY=your_api_key_here
 ```
 
-4. **Run the script**
+3. **Make sure you have Mistral pulled locally:**
+
+```bash
+ollama pull mistral
+```
+
+4. **Run the app:**
 
 ```bash
 python main.py
 ```
 
-Enter a research question when prompted:
-
-```
-> What is the history of the Eiffel Tower?
-```
-
 ---
 
-### 🧠 Powered By
-- LangChain  
-- OpenAI GPT-4o  
-- DuckDuckGo Search  
-- Wikipedia API  
+## 🗣 Example Usage
 
----
+```txt
+You: Who really started COVID-19?
 
-### 📁 Project Structure
-
-| File            | Description                                |
-|-----------------|--------------------------------------------|
-| `main.py`       | Runs the agent and handles user queries    |
-| `tools.py`      | Contains custom tools (search, wiki, save) |
-| `.env`          | Stores your OpenAI API key                 |
-| `requirements.txt` | Lists required Python packages         |
-
----
-
-### ✅ Sample Output
-
-```json
-{
-  "topic": "Eiffel Tower",
-  "summary": "The Eiffel Tower is a wrought-iron lattice tower in Paris, constructed in 1889 for the World's Fair.",
-  "sources": [
-    "https://en.wikipedia.org/wiki/Eiffel_Tower",
-    "https://duckduckgo.com/?q=Eiffel+Tower"
-  ],
-  "tools_used": ["Wikipedia", "DuckDuckGo"]
-}
+🧠 CoreMind: Based on 5 independent articles, the origins remain debated...
+Sources:
+1. https://www.dni.gov/...
+2. https://www.bbc.com/...
 ```
 
 ---
 
-### 🔐 Note
-Do **not** upload your `.env` file or real API key to GitLab.
+## 🔐 Project Goals
+
+* 🧠 Rational and independent analysis
+* 🔎 Transparent sourcing
+* 🚫 No hallucinations
+* 🧭 Truth over popularity
 
 ---
 
+## 📁 Folder Structure
 
-### 🧠 New Features (May 2025 Update)
+```
+coremind-agent/
+│
+├── main.py               # Core logic and conversation loop
+├── tools.py              # Search, save, and evaluation tools
+├── .env                  # (not pushed) SerpAPI key
+├── requirements.txt
+└── README.md
+```
 
-- ✅ Added **conversation memory** using LangChain’s `ConversationBufferMemory`
-- ✅ Agent now supports **multi-turn conversations**, enabling context-aware responses
-- ✅ Wrapped in a **chat loop**, allowing continuous dialogue without restarting the script
-- ✅ Output is now **structured and readable**, parsed cleanly using JSON
+---
+
+## 🔓 License
+
+MIT — use it, modify it, fork it, share it. CoreMind is for everyone who values truth.
+
+---
+
+````
+
+---
+
+✅ Paste this into a new file called `README.md`, then push it with:
+
+```bash
+git add README.md
+git commit -m "Add CoreMind README"
+git push
+````
+
+Let me know if you’d like a one-line tagline or badge for GitHub display.
