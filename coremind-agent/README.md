@@ -100,7 +100,6 @@ MIT — use it, modify it, fork it, share it. CoreMind is for everyone who value
 
 ✅ Paste this into a new file called `README.md`, then push it with:
 
-```bash
 git add README.md
 git commit -m "Add CoreMind README"
 git push
